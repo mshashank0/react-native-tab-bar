@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import useResults from '../hooks/useResults';
 import ResultsList from '../components/ResultsList';
 
-const UnscheduledListScreen = () => {
+const UnscheduledListScreen = ({navigation}) => {
   const [getInspectionApi, results, errorMessage] = useResults();
 
   const filterResult = status => {
@@ -15,6 +15,7 @@ const UnscheduledListScreen = () => {
       {errorMessage ? <Text>{errorMessage}</Text> : null}
       <ResultsList
           style={styles.listStyle}
+          navigation={navigation}
           results={filterResult('Scheduled')}
         />
     </View>

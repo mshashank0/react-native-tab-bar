@@ -7,6 +7,7 @@ import {
   TouchableOpacity
 } from 'react-native';
 import ResultsDetail from './ResultsDetail';
+import InspectionDetailsScreen from '../screens/InspectionDetailsScreen';
 
 const ResultsList = ({ results, navigation }) => {
   if (!results.length) {
@@ -23,7 +24,7 @@ const ResultsList = ({ results, navigation }) => {
           return (
             <TouchableOpacity
               onPress={() =>
-                navigation.navigate('Details', { id: item.claim_id })
+                navigation.navigate('InspectionDetails', { id: item.claim_id })
               }
             >
               <ResultsDetail result={item} />
