@@ -6,10 +6,8 @@ export default () => {
   const [errorMessage, setErrorMessage] = useState('');
 
   const getInspectionApi = async () => {
-    console.log('Hi there!');
     try {
       const response = await yelp.get();
-      console.log(response.data.result);
       setResults(response.data.result);
     } catch (err) {
       setErrorMessage('Something went wrong');
