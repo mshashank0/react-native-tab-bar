@@ -4,12 +4,10 @@ import InspectionContext from '../context/InspectionContext';
 
 const InspectionDetailsScreen = ({ route }) => {
   const {inspection, selectInspection} = useContext(InspectionContext);
-  if (route !== undefined) {
-    const { details } = route.params;
-  }
+
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>{inspection.quote_number}</Text>
+      <Text style={styles.text}>{route !== undefined ? route.params.details.quote_number : inspection.quote_number}</Text>
     </View>
   );
 };
