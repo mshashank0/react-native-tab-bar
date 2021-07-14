@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 const InspectionDetailsScreen = ({ route , navigation}) => {
-  const { details } = route.params;
+  //const { details } = route.params;
   return (
     <View style={styles.container}>
     </View>

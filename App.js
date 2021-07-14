@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, StyleSheet, Platform} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
@@ -49,16 +49,15 @@ const UnScheduledStackNavigator = () => {
       <Stack.Screen
         name="InspectionDetails"
         component={InspectionDetailsScreen}
-        options={({ route }) => ({ title: route.params.details.quote_number })}
+        //options={({ route }) => ({ title: route.params.details.quote_number })}
+        options={({ route }) => ({ title: "Details" })}
 
       />
     </Stack.Navigator>
   );
 }
 
-const Tab = createMaterialBottomTabNavigator();
-
-export default function App() {
+const BaseStackNavigator = () => {
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -86,3 +85,35 @@ export default function App() {
     </NavigationContainer>
   );
 }
+
+const Tab = createMaterialBottomTabNavigator();
+
+export default function App() {
+  if (Platform.isPad) {
+    return (
+      <View style={styles.root}>
+      <View style={styles.masterView}>
+       <BaseStackNavigator />
+      </View>
+      <View style={styles.detailView}>
+        <InspectionDetailsScreen />
+      </View>
+      </View>
+    );
+  }
+  else {
+    return (<BaseStackNavigator />);
+  }
+}
+
+
+const styles = StyleSheet.create({
+  root: {flex: 1, flexDirection: 'row'},
+  masterView: {flex: 1, maxWidth: 400, borderWidth: 1, borderColor: 'red'},
+  detailView: {
+    flex: 1,
+    overflow: 'hidden',
+    borderWidth: 1,
+    borderColor: 'blue',
+  },
+});
