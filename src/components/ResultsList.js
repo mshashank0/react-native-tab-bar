@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   View,
   Text,
   StyleSheet,
   FlatList,
-  TouchableOpacity
+  TouchableOpacity,
+  Platform
 } from 'react-native';
 import ResultsDetail from './ResultsDetail';
+import InspectionContext from '../context/InspectionContext';
 
 const ResultsList = ({ results, navigation }) => {
+  const { data, selectInspection } = useContext(InspectionContext);
   if (!results.length) {
     return null;
   }
@@ -18,15 +21,21 @@ const ResultsList = ({ results, navigation }) => {
       <FlatList
         showsHorizontalScrollIndicator={false}
         data={results}
-        keyExtractor={result => "\""+result.claim_id+"\""}
+        style={styles.list}
+        keyExtractor={result => "\"" + result.claim_id + "\""}
         renderItem={({ item }) => {
           return (
             <TouchableOpacity
-              onPress={() =>
-                navigation.push('InspectionDetails', { details: item })
-              }
+              onPress={() => {
+                if (Platform.isPad) {
+                  selectInspection(item);
+                }
+                else {
+                  navigation.push('InspectionDetails', { details: item })
+                }
+              }}
             >
-              <ResultsDetail result={item} />
+              <ResultsDetail result={item} selected={true}/>
             </TouchableOpacity>
           );
         }}
@@ -36,14 +45,11 @@ const ResultsList = ({ results, navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  title: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginLeft: 15,
-    marginBottom: 5
-  },
   container: {
     flexDirection: 'column'
+  },
+  list: {
+    marginTop: 5
   }
 });
 

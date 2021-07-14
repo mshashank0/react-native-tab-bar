@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Image, Text, StyleSheet } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
-const ResultsDetail = ({ result }) => {
+const ResultsDetail = ({ result}) => {
   const getDateString = () => {
     if (result.scheduled_date === null) {
         return "";
@@ -40,7 +40,7 @@ const ResultsDetail = ({ result }) => {
 const styles = StyleSheet.create({
   container: {
     marginVertical: 5,
-    marginHorizontal: 10,
+    marginHorizontal: 8,
     padding: 8,
     backgroundColor: 'rgba(42, 43, 48, 1.0)',
     flexDirection: 'column'

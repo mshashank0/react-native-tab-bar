@@ -1,21 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import InspectionContext from '../context/InspectionContext';
 
-const InspectionDetailsScreen = ({ route , navigation}) => {
-  //const { details } = route.params;
+const InspectionDetailsScreen = ({ route }) => {
+  const {inspection, selectInspection} = useContext(InspectionContext);
+  if (route !== undefined) {
+    const { details } = route.params;
+  }
   return (
     <View style={styles.container}>
+      <Text style={styles.text}>{inspection.quote_number}</Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'rgba(24, 26, 30, 1.0)',
-    flex: 1
+    backgroundColor: '#2a2b30' ,
+    flex: 1,
+    justifyContent: 'center'
   },
   text: {
-    color: 'white'
+    color: 'white', 
+    alignSelf: 'center'
   }
 });
 
