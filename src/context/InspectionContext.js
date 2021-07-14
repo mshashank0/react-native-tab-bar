@@ -6,7 +6,6 @@ export const InspectionProvider = ({ children }) => {
   const [inspection, setInspection] = useState(null);
 
   const selectInspection = (inspection) => {
-    console.log(inspection.quote_number);  
     setInspection(inspection);
   };
 

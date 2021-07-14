@@ -7,7 +7,7 @@ const InspectionDetailsScreen = ({ route }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>{route !== undefined ? route.params.details.quote_number : inspection.quote_number}</Text>
+      <Text style={styles.text}>{route !== undefined ? route.params.details.quote_number : (inspection !== null ? inspection.quote_number : "")}</Text>
     </View>
   );
 };
