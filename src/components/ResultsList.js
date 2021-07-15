@@ -11,7 +11,7 @@ import ResultsDetail from './ResultsDetail';
 import InspectionContext from '../context/InspectionContext';
 
 const ResultsList = ({ results, navigation }) => {
-  const { data, selectInspection } = useContext(InspectionContext);
+  const { inspection, selectInspection } = useContext(InspectionContext);
   if (!results.length) {
     return null;
   }
@@ -24,6 +24,10 @@ const ResultsList = ({ results, navigation }) => {
         style={styles.list}
         keyExtractor={result => "\"" + result.claim_id + "\""}
         renderItem={({ item }) => {
+          var isSelected = false
+          if(inspection === item) {
+            isSelected = true
+          }
           return (
             <TouchableOpacity
               onPress={() => {
@@ -35,7 +39,7 @@ const ResultsList = ({ results, navigation }) => {
                 }
               }}
             >
-              <ResultsDetail result={item} selected={true}/>
+              <ResultsDetail result={item} isSelected={isSelected}/>
             </TouchableOpacity>
           );
         }}

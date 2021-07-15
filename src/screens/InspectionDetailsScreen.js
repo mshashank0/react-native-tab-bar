@@ -14,7 +14,7 @@ const InspectionDetailsScreen = ({ route }) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#2a2b30' ,
+    backgroundColor: '#16171a' ,
     flex: 1,
     justifyContent: 'center'
   },

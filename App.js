@@ -17,7 +17,7 @@ const ScheduledStackNavigator = () => {
       headerMode="screen"
       screenOptions={{
         headerTintColor: 'white',
-        headerStyle: { backgroundColor: '#2a2b30' },
+        headerStyle: { backgroundColor: '#202126', shadowColor: 'transparent'}
       }}
     >
       <Stack.Screen
@@ -40,7 +40,7 @@ const UnScheduledStackNavigator = () => {
       headerMode="screen"
       screenOptions={{
         headerTintColor: 'white',
-        headerStyle: { backgroundColor: '#2a2b30' },
+        headerStyle: { backgroundColor: '#202126', shadowColor: 'transparent' },
       }}
     >
       <Stack.Screen
@@ -63,7 +63,7 @@ const BaseStackNavigator = () => {
         initialRouteName="InspectionListScreen"
         activeColor="#ffca4d"
         inactiveColor="#babbbe"
-        barStyle={{ backgroundColor: '#2a2b30' }}
+        barStyle={{ backgroundColor: '#202126' }}
         style={{ fontSize: 25, fontWeight: 'bold', margin: 0 }}
       >
         <Tab.Screen
