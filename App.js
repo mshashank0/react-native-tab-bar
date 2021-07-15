@@ -7,6 +7,7 @@ import ScheduledListScreen from './src/screens/ScheduledListScreen';
 import UnscheduledListScreen from './src/screens/UnscheduledListScreen';
 import InspectionDetailsScreen from './src/screens/InspectionDetailsScreen';
 import { InspectionProvider } from './src/context/InspectionContext';
+import { isAndroid, isTablet } from 'react-native-device-detection';
 
 const Stack = createStackNavigator();
 
@@ -88,7 +89,8 @@ const BaseStackNavigator = () => {
 const Tab = createMaterialBottomTabNavigator();
 
 export default function App() {
-  if (Platform.isPad) {
+  console.log(isAndroid, isTablet, Platform.isPad)
+  if (Platform.isPad || (isAndroid && isTablet)) {
     return (
       <InspectionProvider>
         <View style={styles.root}>
