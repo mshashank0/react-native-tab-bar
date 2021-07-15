@@ -8,10 +8,10 @@ import {
   Platform
 } from 'react-native';
 import ResultsDetail from './ResultsDetail';
-import InspectionContext from '../context/InspectionContext';
+import {Context} from '../context/InspectionContext';
 
 const ResultsList = ({ results, navigation }) => {
-  const { inspection, selectInspection } = useContext(InspectionContext);
+  const { state, selectInspection } = useContext(Context);
   if (!results.length) {
     return null;
   }
@@ -25,7 +25,7 @@ const ResultsList = ({ results, navigation }) => {
         keyExtractor={result => "\"" + result.claim_id + "\""}
         renderItem={({ item }) => {
           var isSelected = false
-          if(inspection === item) {
+          if(state === item) {
             isSelected = true
           }
           return (

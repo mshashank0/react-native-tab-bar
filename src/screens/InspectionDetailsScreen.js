@@ -1,13 +1,12 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import InspectionContext from '../context/InspectionContext';
+import { Context } from '../context/InspectionContext';
 
 const InspectionDetailsScreen = ({ route }) => {
-  const {inspection, selectInspection} = useContext(InspectionContext);
-
+  const {state, selectInspection} = useContext(Context);
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>{route !== undefined ? route.params.details.quote_number : (inspection !== null ? inspection.quote_number : "")}</Text>
+      <Text style={styles.text}>{route !== undefined ? route.params.details.quote_number : (state !== null ? state.quote_number : "")}</Text>
     </View>
   );
 };

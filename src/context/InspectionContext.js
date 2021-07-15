@@ -1,19 +1,22 @@
-import React, { useState } from 'react';
+import createDataContext from './createDataContext';
 
-const InspectionContext = React.createContext();
+const inspectionReducer = (state, action) => {
+  switch (action.type) {
+    case 'selectedInspection':
+      return action.payload;
+    default:
+      return state;
+  }
+}
 
-export const InspectionProvider = ({ children }) => {
-  const [inspection, setInspection] = useState(null);
-
-  const selectInspection = (inspection) => {
-    setInspection(inspection);
-  };
-
-  return (
-    <InspectionContext.Provider value={{ inspection, selectInspection }}>
-      {children}
-    </InspectionContext.Provider>
-  );
+const selectInspection = dispatch => {
+  return (inspection) => {
+    dispatch({ type: 'selectedInspection', payload: inspection });
+  }
 };
 
-export default InspectionContext;
+export const { Context, Provider } = createDataContext(
+  inspectionReducer,
+  { selectInspection },
+  null
+);

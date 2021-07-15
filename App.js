@@ -6,7 +6,7 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import ScheduledListScreen from './src/screens/ScheduledListScreen';
 import UnscheduledListScreen from './src/screens/UnscheduledListScreen';
 import InspectionDetailsScreen from './src/screens/InspectionDetailsScreen';
-import { InspectionProvider } from './src/context/InspectionContext';
+import { Provider } from './src/context/InspectionContext';
 import { isAndroid, isTablet } from 'react-native-device-detection';
 
 const Stack = createStackNavigator();
@@ -92,7 +92,7 @@ export default function App() {
   console.log(isAndroid, isTablet, Platform.isPad)
   if (Platform.isPad || (isAndroid && isTablet)) {
     return (
-      <InspectionProvider>
+      <Provider>
         <View style={styles.root}>
           <View style={styles.masterView}>
             <BaseStackNavigator />
@@ -101,14 +101,14 @@ export default function App() {
             <InspectionDetailsScreen />
           </View>
         </View>
-      </InspectionProvider>
+      </Provider>
     );
   }
   else {
     return (
-      <InspectionProvider>
+      <Provider>
         <BaseStackNavigator />
-      </InspectionProvider>
+      </Provider>
     );
   }
 }
