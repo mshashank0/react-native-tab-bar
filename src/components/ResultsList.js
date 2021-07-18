@@ -12,7 +12,7 @@ import {Context} from '../context/InspectionContext';
 
 const ResultsList = ({ results, navigation }) => {
   const { state, selectInspection } = useContext(Context);
-  if (!results.length) {
+  if (results.length <= 0) {
     return null;
   }
 
